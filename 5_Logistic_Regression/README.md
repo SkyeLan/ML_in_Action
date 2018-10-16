@@ -13,7 +13,7 @@
 Regression问题的常规步骤为：  
 1. 寻找h函数（即hypothesis）；
 2. 构造J函数（损失函数）；
-3. 想办法使得J函数最小并求得回归参数（$\theta$）
+3. 想办法使得J函数最小并求得回归参数（ θ ）
 
 
 
@@ -31,7 +31,7 @@ $$
 $$
 h_\theta(x)=g(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}
 $$
-函数$h_\theta(x)$的值有特殊意义，它表示取1的概率，因此对于x分类边界为类别1和类别0的概率为：
+函数 $h_\theta(x)$ 的值有特殊意义，它表示取1的概率，因此对于x分类边界为类别1和类别0的概率为：
 $$
 \begin{align}
 P(y=1|x;\theta)&=h_\theta(x)\\
@@ -72,17 +72,23 @@ l(\theta)=&logL(\theta)\\
 \end{align}
 $$
 
-最大似然估计就是求使$l(\theta)$取最大值时的$\theta$，其实这里可以使用梯度上升法求解，求得的$\theta$就是要求的最佳参数。但是，在Andrew Ng的课程中将$J(\theta)$取为下式，即：
+最大似然估计就是求使 $l(\theta)$ 取最大值时的 θ ，其实这里可以使用梯度上升法求解，求得的 θ 就是要求的最佳参数。但是，在Andrew Ng的课程中将 $J(\theta)$ 取为下式，即：
 $$
 J(\theta)=-\frac{1}{m}l(\theta)
 $$
-因为乘了一个负的系数$-\frac{1}{m}$，所以取$J(\theta)$最小值时的θ为要求的最佳参数。  
+因为乘了一个负的系数 $-\frac{1}{m}$ ，所以取 $J(\theta)$ 最小值时的θ为要求的最佳参数。  
 
 
 
 **梯度下降法求的最小值**
 
-$\theta$ 更新过程：
+开始之前插一句，sigmoid函数有个很重要的特性：
+$$
+g(z)'=g(z)(1-g(z))
+$$
+
+
+θ 更新过程：
 $$
 \theta_j:=\theta_j-\alpha\frac{\delta}{\delta_{\theta_j}}J(\theta)
 $$
@@ -98,7 +104,7 @@ $$
 =&\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
 \end{align}
 $$
-所以 $\theta$ 更新过程可以写为：
+所以 θ 更新过程可以写为：
 $$
 \theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
 $$
@@ -113,4 +119,9 @@ $$
 $$
 \frac{\delta}{\delta_\theta}J(\theta)=\frac{1}{m}X^T(h-y)
 $$
-其中 $h=g(\theta^Tx)$ ，由于$(h-y)$维度是$m*1$，$X$也是$m*1$，所以需对$X$转置
+其中 $h=g(\theta^Tx)$ ，由于 $(h-y)$ 维度是 $m*1$ ， $X$ 也是 $m*1$ ，所以需对 $X$ 转置
+
+所以 θ 的更新过程可写为：
+$$
+\theta_j:=\theta_j-\alpha\frac{1}{m}X^T(h-y)
+$$
