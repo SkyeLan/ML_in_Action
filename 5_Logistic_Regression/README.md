@@ -27,10 +27,12 @@ $$
 $$
 \theta_0+\theta_1x_1+…+\theta_nx_n=\sum_{i=1}^{n}\theta_ix_i=\theta^Tx
 $$
+
 **构造预测函数**为：
 $$
 h_\theta(x)=g(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}
 $$
+
 函数 $h_\theta(x)$ 的值有特殊意义，它表示取1的概率，因此对于x分类边界为类别1和类别0的概率为：
 $$
 \begin{align}
@@ -56,6 +58,7 @@ $$
 $$
 P(y|x;\theta)=(h_\theta(x))^y(1-h_\theta(x))^{1-y}
 $$
+
 取似然函数为：
 $$
 \begin{align}
@@ -76,6 +79,7 @@ $$
 $$
 J(\theta)=-\frac{1}{m}l(\theta)
 $$
+
 因为乘了一个负的系数 $-\frac{1}{m}$ ，所以取 $J(\theta)$ 最小值时的θ为要求的最佳参数。  
 
 
@@ -88,10 +92,11 @@ g(z)'=g(z)(1-g(z))
 $$
 
 
-θ 更新过程：
+θ更新过程：
 $$
 \theta_j:=\theta_j-\alpha\frac{\delta}{\delta_{\theta_j}}J(\theta)
 $$
+
 其中：
 $$
 \begin{align}
@@ -104,6 +109,7 @@ $$
 =&\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
 \end{align}
 $$
+
 所以 θ 更新过程可以写为：
 $$
 \theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}
@@ -115,13 +121,15 @@ $$
 $$
 J(\theta)=-\frac{1}{m}(y^Tlog(h)+(1-y^T)log(1-h))
 $$
+
 公式 $\frac{\delta}{\delta_{\theta_j}}J(\theta)=\frac{1}{m}\sum_{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}$ 可以写为：
 $$
 \frac{\delta}{\delta_\theta}J(\theta)=\frac{1}{m}X^T(h-y)
 $$
-其中 $h=g(\theta^Tx)$ ，由于 $(h-y)$ 维度是 $m*1$ ， $X$ 也是 $m*1$ ，所以需对 $X$ 转置
 
-所以 θ 的更新过程可写为：
+其中 $h=g(\theta^Tx)$ ，由于 $(h-y)$ 维度是 $m\times1$ ， $X$ 也是 $m\times1$ ，所以需对 $X$ 转置
+
+所以θ的更新过程可写为：
 $$
 \theta_j:=\theta_j-\alpha\frac{1}{m}X^T(h-y)
 $$
