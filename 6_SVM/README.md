@@ -14,10 +14,12 @@
 $$
 distance = \frac{|w^Tx + b|}{||w||}
 $$
+
 找到具有最小间隔的数据点，再对该间隔最大化：
 $$
 \mathop{\arg\max}_{(w,b)}\{\min_n \ label·\frac{(w^Tx+b)}{||w||}\}
 $$
+
 转化后的优目标函数：
 $$
 \begin{align}
@@ -26,6 +28,7 @@ st. \ &\alpha\geq0\\
 &\sum_{i-1}^m\alpha_i·label^{(i)}=0
 \end{align}
 $$
+
 引入松弛变量后约束条件变为：
 $$
 \begin{align}
